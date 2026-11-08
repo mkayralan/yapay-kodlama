@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayısal Mantık Tasarımı ve İşlemciler | Yapay Kodlama</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="img/logo.png" alt="Yapay Kodlama" width="230">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="yazilar.html" class="aktif">Yazılarım</a></li>
+                <li><a href="hakkimda.html">Hakkımda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="sayfa-duzeni">
+            <div class="ana-sutun">
+                <article class="makale-icerik">
+                    <span class="kategori-etiket">Bilgisayar Mimarisi &amp; Donanım</span>
+                    <h2>Sayısal Mantık Tasarımı: Lojik Kapılardan İşlemcilere</h2>
+                    <p class="makale-meta">Yazar: <strong>Malik Kayra Alan</strong> &middot; Tarih: 8 Kasım 2026 &middot; Kategori: Bilgisayar Mimarisi</p>
+
+                    <p>Modern bilgisayar işlemcileri saniyede milyarlarca işlemi yalnızca iki temel sinyal seviyesiyle gerçekleştirir: <strong>Lojik 0 (düşük voltaj)</strong> ve <strong>Lojik 1 (yüksek voltaj)</strong>. Sayısal mantık tasarımı, transistörlerin oluşturduğu mantık kapılarını kullanarak aritmetik ve bellek devrelerinin nasıl kurulduğunu açıklar.</p>
+
+                    <hr>
+
+                    <section>
+                        <h3>Temel Lojik Kapılar ve Boolean Cebiri</h3>
+                        <p>Sayısal devrelerde karmaşık ifadeleri daha az donanım kapısı kullanarak gerçeklemek için <strong>Boolean sadeleştirme kuralları</strong> ve De Morgan teoremleri kullanılır:</p>
+                        <ul>
+                            <li><strong>AND (VE) Kapısı:</strong> Tüm girişler 1 olduğunda çıkış 1 üretir ($F = A \cdot B$).</li>
+                            <li><strong>OR (VEYA) Kapısı:</strong> Girişlerden en az biri 1 olduğunda çıkış 1 üretir ($F = A + B$).</li>
+                            <li><strong>XOR (Özel VEYA) Kapısı:</strong> Girişler birbirinden farklı olduğunda 1 üretir; toplama devrelerinde ve eşlik (parity) kontrolünde temel yapı taşıdır.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Eşlik (Parity) Biti ile Hata Denetimi</h3>
+                        <p>Ağ yapılarında ve bellek birimleri arasındaki veri transferinde bit kaymalarını tespit etmek için <strong>eşlik biti (parity bit)</strong> kullanılır. Örneğin 3 bitlik bir veride ($X, Y, Z$) çift eşlik (even parity) biti üretmek için XOR kapıları zincirleme bağlanır:</p>
+
+                        <div class="kod-kutusu">
+                            <div class="kod-baslik">parity_check.py (Python ile Çift Eşlik Biti Hesaplama)</div>
+                            <pre><code>def cift_eslik_biti_uret(veri_bitleri):
+    birlerin_sayisi = veri_bitleri.count("1")
+    eslik_biti = "1" if birlerin_sayisi % 2 != 0 else "0"
+    return veri_bitleri + eslik_biti
+
+ornek_veri = "1011"
+iletilecek_paket = cift_eslik_biti_uret(ornek_veri)
+print(f"Veri: {ornek_veri} -> Eşlik Bitli Paket: {iletilecek_paket}")</code></pre>
+                        </div>
+                    </section>
+                </article>
+
+                <hr>
+
+                <section id="yorum-bolumu">
+                    <h3>Makale Hakkında Yorum Bırakın</h3>
+                    <form id="yorumFormu">
+                        <p>
+                            <label for="adSoyad">Adınız Soyadınız</label><br>
+                            <input type="text" id="adSoyad" name="adSoyad" placeholder="Örn. Ahmet Yılmaz" required>
+                        </p>
+                        <p>
+                            <label for="eposta">E-posta Adresiniz</label><br>
+                            <input type="email" id="eposta" name="eposta" placeholder="ornek@ankara.edu.tr" required>
+                        </p>
+                        <p>
+                            <label for="yorumMetni">Yorumunuz</label><br>
+                            <textarea id="yorumMetni" name="yorumMetni" rows="4" placeholder="Makale hakkındaki düşüncelerinizi yazın..." required></textarea>
+                        </p>
+                        <button type="submit">Yorumu Gönder</button>
+                    </form>
+                </section>
+            </div>
+
+            <aside class="sidebar">
+                <div class="sidebar-kutu">
+                    <h3 class="bolum-baslik">Yazar Hakkında</h3>
+                    <p><strong>Malik Kayra Alan</strong><br>Ankara Üniversitesi Bilgisayar Mühendisliği öğrencisi.</p>
+                    <a href="hakkimda.html" class="devamini-oku">Hakkımda Sayfası &rarr;</a>
+                </div>
+
+                <div class="sidebar-kutu">
+                    <h3 class="bolum-baslik">Diğer Makaleler</h3>
+                    <div class="son-icerikler-liste">
+                        <div class="kucuk-icerik">
+                            <img src="img/python-ai.png" alt="Python" class="kucuk-icerik-gorsel">
+                            <div class="kucuk-icerik-bilgi">
+                                <span>01.11.2026</span>
+                                <h4><a href="python-nedir.html">Python Nedir?</a></h4>
+                            </div>
+                        </div>
+                        <div class="kucuk-icerik">
+                            <div class="kucuk-icerik-gorsel">ARD</div>
+                            <div class="kucuk-icerik-bilgi">
+                                <span>08.11.2026</span>
+                                <h4><a href="arduino-nasil-kurulur.html">Arduino Nasıl Kurulur?</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-icerik">
+            <div class="footer-sutun">
+                <h3>Yapay Kodlama</h3>
+                <p>Ankara Üniversitesi Bilgisayar Mühendisliği öğrencisi Malik Kayra Alan tarafından geliştirilen; yazılım, yapay zekâ ve donanım odaklı kişisel teknoloji blogu.</p>
+            </div>
+            <div class="footer-sutun">
+                <h3>Hızlı Bağlantılar</h3>
+                <ul class="footer-liste">
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="yazilar.html">Tüm Yazılarım</a></li>
+                    <li><a href="hakkimda.html">Hakkımda</a></li>
+                    <li><a href="https://github.com/mkayralan/yapay-kodlama" target="_blank">GitHub Proje Deposu</a></li>
+                </ul>
+            </div>
+            <div class="footer-sutun">
+                <h3>Popüler Makaleler</h3>
+                <ul class="footer-liste">
+                    <li><a href="python-nedir.html">Python Nedir?</a></li>
+                    <li><a href="arduino-nasil-kurulur.html">Arduino Nasıl Kurulur?</a></li>
+                    <li><a href="sayisal-mantik-ve-islemciler.html">Sayısal Mantık ve İşlemciler</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-alt">
+            <p>&copy; 2026 Yapay Kodlama &middot; Malik Kayra Alan &middot; BLM2537 Ağ Tabanlı Programlamaya Giriş</p>
+        </div>
+    </footer>
+</body>
+</html>
